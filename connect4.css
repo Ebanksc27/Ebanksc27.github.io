@@ -1,0 +1,106 @@
+/* game board table */
+
+#board td {
+  width: 50px;
+  height: 50px;
+  border: solid 1px #666;
+  border-collapse: collapse;
+  border: solid 3px black;
+}
+
+/* pieces are div within game table cells: draw as colored circles */
+
+.piece {
+  border: 1px solid #000000;
+  margin: 5px;
+  width: 80%; 
+  height: 80%; 
+  border-radius: 50%; /* make the div round to form a circle */
+  animation-name: piece-fall; /* set the name of the animation */
+  animation-duration: 0.5s; /* set the duration of the animation to 0.5 seconds */
+  animation-fill-mode: forwards; /* set the fill mode of the animation to forwards */
+}
+
+/* define the animation */
+@keyframes piece-fall {
+  /* set the starting state of the animation */
+  from {
+    transform: translateY(-50%); /* move the div up 50% of its height */
+    opacity: 0; /* make the div invisible */
+  }
+  /* set the ending state of the animation */
+  to {
+    transform: translateY(0); /* move the div down to its original position */
+    opacity: 1; /* make the div visible */
+  }
+}
+
+/* Make pieces red/blue, depending on player 1/2 piece */
+.piece.p1 {
+  background-color: #800000;
+}
+
+.piece.p2 {
+  background-color: #000080;
+}
+
+/* column-top is table row of clickable areas for each column */
+
+#column-top td {
+  border: dashed 1px lightgray;
+}
+
+#column-top td:hover {
+  background-color: #4e4376;
+}
+
+/* to center the game */
+#game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  justify-content: flex-start;
+}
+
+/* Extra styles */
+body {
+  background: linear-gradient(to bottom right, #2b5876, #4e4376);
+}
+
+#board {
+  background: linear-gradient(to bottom right, #b19cd9, #c6c6c6);
+  border: 2px solid silver;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+#title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.title-letter {
+  display: inline-block;
+  animation: fall-in 0.5s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes fall-in {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+#title {
+  position: relative;
+  top: 0%;
+  transform: translateY(-50%);
+}
