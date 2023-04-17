@@ -1,3 +1,23 @@
+/* Start Button */
+#start-button {
+  display: block;
+  font-size: 1.5rem; /* make the font size larger */
+  padding: 15px 30px; /* add some padding for a larger button */
+  background: linear-gradient(to bottom right, #b19cd9, #c6c6c6); /* match the background color of the board */
+  border: 2px solid silver;
+  border-radius: 5px;
+  color: #000;
+  cursor: pointer;
+  margin: 1rem auto; /* center the button */
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+#start-button:hover {
+  background: linear-gradient(to bottom right, #c6c6c6, #b19cd9);
+}
+
 /* game board table */
 
 #board td {
@@ -54,13 +74,14 @@
   background-color: #4e4376;
 }
 
-/* to center the game */
+/* to center the game as well as flex*/
 #game {
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* stack elements vertically */
   align-items: center;
   height: 100vh;
-  justify-content: flex-start;
+  justify-content: center; /* center the content vertically */
+  padding: 1rem; /* add some padding around the content */
 }
 
 /* Extra styles */
@@ -103,4 +124,26 @@ body {
   position: relative;
   top: 0%;
   transform: translateY(-50%);
+}
+
+/* resizing for mobile */
+@media screen and (max-width: 767px) {
+  #title {
+    font-size: 2rem;
+  }
+
+  #start-button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+  #board td {
+    width: 30px;
+    height: 30px;
+  }
+
+  .piece {
+    width: 60%;
+    height: 60%;
+  }
 }
