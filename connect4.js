@@ -1,4 +1,21 @@
-// I added a title myself for flavor
+document.addEventListener('DOMContentLoaded', () => {
+  const startButton = document.getElementById("start-button");
+  startButton.addEventListener("click", startGame);
+});
+
+let gameStarted = false;
+
+function startGame() {
+    if (!gameStarted) {
+      gameStarted = true;
+      console.log("Starting game...");
+      const startButton = document.getElementById("start-button");
+      
+      // Remove the event listener and the button element from the DOM
+      startButton.removeEventListener("click", startGame);
+      startButton.remove();
+
+   // I added a title for flavor
 const title = document.getElementById("title");
 
 // Create an array of the letters in "Connect Four"
@@ -35,8 +52,8 @@ let board = []; // array of rows, each row is array of cells  (board[y][x])
 function makeBoard() {
   // TODO: set "board" to empty HEIGHT x WIDTH matrix array
   board = Array.from({ length: HEIGHT }, () => Array.from({ length: WIDTH }, () => null));
-  // creates and array of arrays with demensions height and width, intializeing each cell with null.
-  // Array.from() used to create array of specified length, creating another array of the length and populating it with null.
+  // Array.from() used to create 2D array for game board
+  // creates 2D array with demensions height and width, intializeing each cell with null.
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
@@ -92,7 +109,7 @@ function findSpotForCol(x) {
       return y;
   }
 }
-// If now empty row is found, return null 
+// If no empty row is found, return null 
 return null;
 }
 
@@ -162,7 +179,7 @@ function handleClick(evt) {
   }
 
   // check for tie
-  // TODO: check if all cells in board are filled; if so call, call endGame
+  // TODO: check if all cells in board are filled; if so, call endGame
   // Check tie by checking if all cells in every row are filled
   const isTie = board.every(row => row.every(cell => cell !== null));
   if (isTie) {
@@ -216,3 +233,5 @@ function checkForWin() {
 
 makeBoard(); // create the board
 makeHtmlBoard(); // create the visual HTML board
+}
+}
